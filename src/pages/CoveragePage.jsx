@@ -11,7 +11,7 @@ export default function CoveragePage() {
       <div className="px-5 pt-12 lg:px-8">
         <div className="mx-auto max-w-[1240px]">
           <p className="eyebrow">Coverage</p>
-          <h1 className="mt-3 max-w-2xl text-4xl font-extrabold tracking-[-0.05em] text-slate-950 sm:text-5xl">
+          <h1 className="mt-4 max-w-2xl text-3xl font-extrabold tracking-[-0.02em] leading-tight text-slate-950 sm:text-4xl">
             Where we&rsquo;re helping right now.
           </h1>
         </div>

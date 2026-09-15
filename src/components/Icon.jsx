@@ -8,6 +8,8 @@ import {
   ShieldCheck,
   Award,
   Zap,
+  Scissors,
+  Flower2,
 } from "lucide-react";
 
 const ICONS = {
@@ -20,6 +22,8 @@ const ICONS = {
   ShieldCheck,
   Award,
   Zap,
+  Scissors,
+  Flower2,
 };
 
 /**

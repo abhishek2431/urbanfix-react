@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { Search, ArrowRight, Star, Check, MapPin } from "lucide-react";
 import { quickChips } from "../data/content";
 
-export default function HeroSection({ selectedCity }) {
+export default function HeroSection() {
+  const { selectedCity } = useOutletContext();
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -30,7 +31,7 @@ export default function HeroSection({ selectedCity }) {
             <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.12)]" />
             Trusted home experts
           </span>
-          <h1 className="max-w-[670px] text-5xl font-extrabold leading-[0.98] tracking-[-0.065em] text-slate-950 sm:text-6xl lg:text-[70px]">
+          <h1 className="max-w-[670px] text-5xl font-extrabold leading-[1.05] tracking-[-0.02em] text-slate-950 sm:text-6xl lg:text-[68px]">
             Good homes need <span className="text-sky-600">great help.</span>
           </h1>
           <p className="mt-6 max-w-[560px] text-lg leading-8 text-slate-600">
