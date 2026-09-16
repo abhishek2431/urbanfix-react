@@ -50,7 +50,7 @@ export default function FAQSection() {
             <HelpCircle size={14} strokeWidth={2.5} aria-hidden="true" />
             FAQs
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.045em] text-slate-950 sm:text-4xl">
+          <h2 className="mt-3 text-2xl font-extrabold tracking-[-0.02em] leading-tight text-slate-950 sm:text-3xl">
             Frequently asked questions
           </h2>
           <p className="mt-2 text-sm leading-6 text-slate-500">
@@ -64,9 +64,8 @@ export default function FAQSection() {
             return (
               <div
                 key={faq.id}
-                className={`overflow-hidden rounded-2xl border bg-white transition-colors ${
-                  isOpen ? "border-sky-300 shadow-[0_10px_30px_rgba(14,116,144,0.08)]" : "border-slate-200"
-                }`}
+                className={`overflow-hidden rounded-2xl border bg-white transition-colors ${isOpen ? "border-sky-300 shadow-[0_10px_30px_rgba(14,116,144,0.08)]" : "border-slate-200"
+                  }`}
               >
                 <button
                   type="button"
@@ -82,9 +81,8 @@ export default function FAQSection() {
                     size={18}
                     strokeWidth={2.5}
                     aria-hidden="true"
-                    className={`shrink-0 text-sky-600 transition-transform duration-200 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
+                    className={`shrink-0 text-sky-600 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
                 {isOpen && (

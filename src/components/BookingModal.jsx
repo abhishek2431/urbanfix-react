@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { X, CheckCircle2 } from "lucide-react";
 import { cities } from "../data/content";
 
@@ -12,8 +12,18 @@ export default function BookingModal({ service, selectedCity, onClose }) {
   const [form, setForm] = useState(EMPTY_FORM);
   const [city, setCity] = useState(selectedCity);
   const [submitted, setSubmitted] = useState(false);
+  const dialogRef = useRef(null);
 
-  const update = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
+  // Open the native <dialog> when component mounts
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (dialog && !dialog.open) {
+      dialog.showModal();
+    }
+  }, []);
+
+  const update = (field) => (e) =>
+    setForm((f) => ({ ...f, [field]: e.target.value }));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,16 +31,26 @@ export default function BookingModal({ service, selectedCity, onClose }) {
     setSubmitted(true);
   };
 
+  // Native <dialog> fires 'close' event on ESC; sync with parent
+  const handleClose = () => {
+    dialogRef.current?.close();
+    onClose?.();
+  };
+
   return (
-    <div
+    <dialog
+      ref={dialogRef}
       className="booking-overlay"
-      role="dialog"
-      aria-modal="true"
       aria-label="Book a technician"
-      onClick={onClose}
+      onClose={handleClose}
     >
-      <div className="booking-dialog" onClick={(e) => e.stopPropagation()}>
-        <button className="booking-close" aria-label="Close" onClick={onClose}>
+      <div className="booking-dialog">
+        <button
+          type="button"
+          className="booking-close"
+          aria-label="Close booking dialog"
+          onClick={handleClose}
+        >
           <X size={18} strokeWidth={2} aria-hidden="true" />
         </button>
 
@@ -54,8 +74,9 @@ export default function BookingModal({ service, selectedCity, onClose }) {
               </p>
             </div>
             <button
+              type="button"
               className="mt-2 rounded-full bg-slate-950 px-6 py-2.5 text-sm font-bold text-white hover:bg-sky-700 transition-colors"
-              onClick={onClose}
+              onClick={handleClose}
             >
               Done
             </button>
@@ -86,11 +107,11 @@ export default function BookingModal({ service, selectedCity, onClose }) {
             {/* Divider */}
             <div className="my-6 h-px bg-slate-100" />
 
-            {/* Form — 2 column grid on ≥640px */}
+            {/* Form */}
             <form className="grid gap-4" onSubmit={handleSubmit}>
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="booking-field">
-                  Full name
+                  Full name{" "}
                   <input
                     required
                     placeholder="e.g. Priya Sharma"
@@ -101,7 +122,7 @@ export default function BookingModal({ service, selectedCity, onClose }) {
                 </label>
 
                 <label className="booking-field">
-                  Phone number
+                  Phone number{" "}
                   <input
                     required
                     type="tel"
@@ -115,7 +136,7 @@ export default function BookingModal({ service, selectedCity, onClose }) {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="booking-field">
-                  Address / area
+                  Address / area{" "}
                   <input
                     required
                     placeholder="Flat / street / locality"
@@ -126,7 +147,7 @@ export default function BookingModal({ service, selectedCity, onClose }) {
                 </label>
 
                 <label className="booking-field">
-                  City
+                  City{" "}
                   <select
                     className="booking-select"
                     value={city}
@@ -155,6 +176,6 @@ export default function BookingModal({ service, selectedCity, onClose }) {
           </div>
         )}
       </div>
-    </div>
+    </dialog>
   );
 }

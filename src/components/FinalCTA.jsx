@@ -28,7 +28,7 @@ export default function FinalCTA() {
                 <Sparkles size={14} strokeWidth={2.5} aria-hidden="true" />
                 Ready when you are
               </p>
-              <h2 className="mt-3 text-3xl font-extrabold leading-tight tracking-[-0.045em] sm:text-4xl lg:text-[42px]">
+              <h2 className="mt-3 text-2xl font-extrabold leading-tight tracking-[-0.02em] sm:text-3xl lg:text-4xl">
                 Ready to fix it? <br className="hidden sm:block" />
                 We&rsquo;re one tap away.
               </h2>

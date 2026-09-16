@@ -1,10 +1,24 @@
 import { Star } from "lucide-react";
 
+const STAR_KEYS = ["star-1", "star-2", "star-3", "star-4", "star-5"];
+
 export default function StarRating({ count = 5, size = 14, className = "" }) {
+  const keys = STAR_KEYS.slice(0, count);
+
   return (
-    <div className={`flex gap-0.5 text-amber-400 ${className}`}>
-      {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} size={size} fill="currentColor" strokeWidth={2} aria-hidden="true" />
+    <div
+      className={`flex gap-0.5 text-amber-400 ${className}`}
+      role="img"
+      aria-label={`${count} out of 5 stars`}
+    >
+      {keys.map((key) => (
+        <Star
+          key={key}
+          size={size}
+          fill="currentColor"
+          strokeWidth={2}
+          aria-hidden="true"
+        />
       ))}
     </div>
   );
