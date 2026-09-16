@@ -27,9 +27,9 @@ export default function HeroSection() {
     <section className="hero-section">
       <div className="mx-auto grid max-w-[1240px] gap-10 px-5 py-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-8 lg:py-20">
         <div className="relative z-10">
-          <span className="mb-5 inline-flex h-5 w-fit shrink-0 items-center gap-1 rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.14em] text-sky-700">
-            <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.12)]" />
-            Trusted home experts
+          <span className="mb-5 inline-flex h-5 w-fit shrink-0 items-center gap-1.5 rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.14em] text-sky-700">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.12)]" />
+            {/* */}Trusted home experts
           </span>
           <h1 className="max-w-[670px] text-5xl font-extrabold leading-[1.05] tracking-[-0.02em] text-slate-950 sm:text-6xl lg:text-[68px]">
             Good homes need <span className="text-sky-600">great help.</span>

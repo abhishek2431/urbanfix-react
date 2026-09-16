@@ -12,14 +12,21 @@ export default function CityPickerModal({ selectedCity, onSelectCity, onClose })
     }
   }, []);
 
-  const handleClose = () => {
+  // Imperatively close the native dialog (X button, city select, etc.)
+  // The native 'close' event will fire and trigger handleDialogClose.
+  const closeDialog = () => {
     dialogRef.current?.close();
+  };
+
+  // Native 'close' event fires once after dialog closes (ESC, close(), etc.)
+  // This is the only place that notifies the parent.
+  const handleDialogClose = () => {
     onClose?.();
   };
 
   const handleSelect = (city) => {
     onSelectCity(city);
-    handleClose();
+    closeDialog();
   };
 
   return (
@@ -27,14 +34,14 @@ export default function CityPickerModal({ selectedCity, onSelectCity, onClose })
       ref={dialogRef}
       className="city-picker-overlay"
       aria-label="Choose your city"
-      onClose={handleClose}
+      onClose={handleDialogClose}
     >
       <div className="city-picker-dialog">
         <button
           type="button"
           className="booking-close"
           aria-label="Close city picker"
-          onClick={handleClose}
+          onClick={closeDialog}
         >
           <X size={18} strokeWidth={2} aria-hidden="true" />
         </button>

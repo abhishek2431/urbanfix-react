@@ -31,9 +31,15 @@ export default function BookingModal({ service, selectedCity, onClose }) {
     setSubmitted(true);
   };
 
-  // Native <dialog> fires 'close' event on ESC; sync with parent
-  const handleClose = () => {
+  // Imperatively close the native dialog (X button, Done button, etc.)
+  // The native 'close' event will fire and trigger handleDialogClose.
+  const closeDialog = () => {
     dialogRef.current?.close();
+  };
+
+  // Native 'close' event fires once after dialog closes (ESC, close(), etc.)
+  // This is the only place that notifies the parent.
+  const handleDialogClose = () => {
     onClose?.();
   };
 
@@ -42,14 +48,14 @@ export default function BookingModal({ service, selectedCity, onClose }) {
       ref={dialogRef}
       className="booking-overlay"
       aria-label="Book a technician"
-      onClose={handleClose}
+      onClose={handleDialogClose}
     >
       <div className="booking-dialog">
         <button
           type="button"
           className="booking-close"
           aria-label="Close booking dialog"
-          onClick={handleClose}
+          onClick={closeDialog}
         >
           <X size={18} strokeWidth={2} aria-hidden="true" />
         </button>
@@ -76,7 +82,7 @@ export default function BookingModal({ service, selectedCity, onClose }) {
             <button
               type="button"
               className="mt-2 rounded-full bg-slate-950 px-6 py-2.5 text-sm font-bold text-white hover:bg-sky-700 transition-colors"
-              onClick={handleClose}
+              onClick={closeDialog}
             >
               Done
             </button>
