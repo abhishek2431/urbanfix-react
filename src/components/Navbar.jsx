@@ -76,7 +76,7 @@ export default function Navbar({ selectedCity, onOpenCityPicker, onBookAPro }) {
             <Wrench size={20} strokeWidth={2.5} aria-hidden="true" />
           </span>
           <span className="hidden text-left sm:block">
-            <strong className="block text-[17px] leading-none tracking-[-0.04em] text-slate-950">
+            <strong className="block text-[17px] leading-none tracking-[-0.02em] text-slate-950">
               UrbanFix
             </strong>
             <span className="mt-1 block text-[10px] font-bold uppercase tracking-[0.16em] text-sky-600">
@@ -223,8 +223,7 @@ export default function Navbar({ selectedCity, onOpenCityPicker, onBookAPro }) {
                 to={link.to}
                 end={link.to === "/"}
                 className={({ isActive }) =>
-                  `rounded-lg px-3 py-2.5 text-sm font-bold hover:bg-slate-50 ${
-                    isActive ? "text-sky-700" : "text-slate-700"
+                  `rounded-lg px-3 py-2.5 text-sm font-bold hover:bg-slate-50 ${isActive ? "text-sky-700" : "text-slate-700"
                   }`
                 }
                 onClick={() => setMobileOpen(false)}
